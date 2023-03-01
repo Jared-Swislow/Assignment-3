@@ -3,7 +3,7 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
-public class GuessWho extends JFrame {
+public class GuessWho extends JFrame{
 
     public static void main(String[] args) {
         GuessWho g = new GuessWho();
