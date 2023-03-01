@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+/**Main file for Assignment 3
+ * */
 public class GuessWho extends JFrame{
 
     public static void main(String[] args) {
