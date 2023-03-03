@@ -1,6 +1,11 @@
 package View;
 
+import Model.ChatConnection;
+import Model.ChatLog;
+import Model.Message;
+
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**Main file for Assignment 3
@@ -22,7 +27,21 @@ public class GuessWho extends JFrame{
         add(board, BorderLayout.CENTER);
         
         Chat chat = new Chat();
-        add(chat, BorderLayout.SOUTH);
+        chat.setBorder(new EmptyBorder(5, 5, 5, 5));
+        JScrollPane displayWithScroll = new JScrollPane (chat.getDisplayArea(),
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane writeWithScroll = new JScrollPane (chat.getWriteArea(),
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        ChatLog chatlog = ChatLog.getChatLog();
+        chatlog.addObserver(chat);
+        //chatlog.addMessage(new Message("test", true));
+        //chatlog.addMessage(new Message("test from other person", false));
         
+        add(chat, BorderLayout.SOUTH);
+        chat.add(displayWithScroll, BorderLayout.NORTH);
+        chat.add(writeWithScroll, BorderLayout.SOUTH);
+        
+        Thread chatConnectionThread = new Thread(new ChatConnection());
+        chatConnectionThread.start();
     }
 }

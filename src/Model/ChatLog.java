@@ -21,7 +21,7 @@ public class ChatLog extends Observable {
 		return chatLog;
 	}
 	
-	void addMessage(Message m) {
+	public void addMessage(Message m) {
 		messages.add(m);
 		setChanged();
 		notifyObservers();
