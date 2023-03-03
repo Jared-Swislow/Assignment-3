@@ -39,7 +39,7 @@ public class GuessWho extends JFrame{
         chat.add(displayWithScroll, BorderLayout.NORTH);
         chat.add(writeWithScroll, BorderLayout.SOUTH);
         
-        Thread chatConnectionThread = new Thread(new ChatConnection());
+        Thread chatConnectionThread = new Thread(ChatConnection.getInstance());
         chatConnectionThread.start();
     }
 }
