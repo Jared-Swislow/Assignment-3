@@ -6,25 +6,30 @@ import javax.imageio.*;
 import java.awt.*;
 
 public class Person extends JButton {
-    private boolean correct = false;
-    private boolean eliminated = false;
+    private boolean correct;
+    private boolean eliminated;
     private Image img;
+    private int id;
 
-    public Person(String imagePath){
+    public Person(String imagePath, int id){
         try {
             img = ImageIO.read(Objects.requireNonNull(getClass().getResource(imagePath)));
             setIcon(new ImageIcon(img));
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        this.id = id;
+        this.correct = false;
+        this.eliminated = false;
     }
 
     public boolean isEliminated() {
         return eliminated;
     }
 
-    public void setEliminated(boolean eliminated) {
-        this.eliminated = eliminated;
+
+    public void setEliminatedTrue() {
+        this.eliminated = true;
     }
 
     public void setCorrect(boolean correct) {
