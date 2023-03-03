@@ -25,7 +25,7 @@ public class Chat extends JPanel implements Observer {
 		displayArea = new JTextArea(noChatYet);
 		displayArea.setEditable(false);
 		displayArea.setRows(5);
-		displayArea.setAutoscrolls(true); //? not sure what this does but i think its what we want
+		//displayArea.setAutoscrolls(true); //? not sure what this does but i think its what we want
 		
 		add(displayArea, BorderLayout.NORTH);
 		
