@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**Establishes and maintains a connection between the chats
+/**Establishes and maintains a connection between the users
  * */
 public class ChatConnection implements Runnable {
 	private static ChatConnection instance;
+	private Socket s;
 	private boolean isServer;
 	
 	private ChatConnection() {
@@ -32,17 +33,26 @@ public class ChatConnection implements Runnable {
 		isServer = false;
 	}
 	
-	@Override
-	public void run() {
+	//Sets up connection to other user
+	public int connectToOtherUser() {
 		try {
-			//Set up connection
-			Socket s;
-			if(isServer) {
+			if (isServer) {
 				ServerSocket ss = new ServerSocket(6666);
 				s = ss.accept();
 			} else {
 				s = new Socket("localhost", 6666);
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return 0;
+	}
+	
+	@Override
+	public void run() {
+		try {
+			
 			DataInputStream din = new DataInputStream(s.getInputStream());
 			DataOutputStream dout = new DataOutputStream(s.getOutputStream());
 			
