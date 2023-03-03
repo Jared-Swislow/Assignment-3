@@ -28,6 +28,10 @@ public class ChatConnection implements Runnable {
 		isServer = true;
 	}
 	
+	public void setAsClient() {
+		isServer = false;
+	}
+	
 	@Override
 	public void run() {
 		try {
