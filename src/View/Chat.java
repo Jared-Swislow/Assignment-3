@@ -26,7 +26,10 @@ public class Chat extends JPanel implements Observer {
 		displayArea.setEditable(false);
 		displayArea.setRows(5);
 		//displayArea.setAutoscrolls(true); //? not sure what this does but i think its what we want
-		
+
+		JButton sendButton = new JButton("Send");
+		add(sendButton, BorderLayout.EAST);
+
 		add(displayArea, BorderLayout.NORTH);
 		
 		writeArea = new JTextArea();
@@ -34,7 +37,7 @@ public class Chat extends JPanel implements Observer {
 		writeArea.setRows(4);
 		
 		add(writeArea, BorderLayout.SOUTH);
-		
+
 	}
 	
 	@Override
