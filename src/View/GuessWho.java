@@ -1,5 +1,6 @@
 package View;
 
+import Model.ChatConnection;
 import Model.ChatLog;
 
 import javax.swing.*;
@@ -29,8 +30,8 @@ public class GuessWho extends JFrame{
         JScrollPane displayWithScroll = new JScrollPane (chat.getDisplayArea(),
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         JScrollPane writeWithScroll = new JScrollPane (chat.getWriteArea(),
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        ChatLog chatlog = ChatLog.getChatLog();
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        ChatLog chatlog = ChatLog.getInstance();
         chatlog.addObserver(chat);
         
         add(chat, BorderLayout.SOUTH);

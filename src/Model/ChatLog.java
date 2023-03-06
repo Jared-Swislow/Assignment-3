@@ -14,7 +14,7 @@ public class ChatLog extends Observable {
 		messages = new ArrayList<Message>();
 	}
 	
-	public static ChatLog getChatLog() {
+	public static ChatLog getInstance() {
 		if(chatLog == null) {
 			chatLog = new ChatLog();
 		}

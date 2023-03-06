@@ -13,7 +13,7 @@ public class Person extends JButton {
 
     public Person(String imagePath, int id){
         try {
-            img = ImageIO.read(Objects.requireNonNull(getClass().getResource(imagePath)));
+            //img = ImageIO.read(Objects.requireNonNull(getClass().getResource(imagePath)));
             setIcon(new ImageIcon(img));
         } catch (Exception ex) {
             System.out.println(ex);

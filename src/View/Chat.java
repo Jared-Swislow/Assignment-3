@@ -1,5 +1,6 @@
 package View;
 
+import Controller.KeyHandler;
 import Model.ChatLog;
 import Model.Message;
 
@@ -25,7 +26,7 @@ public class Chat extends JPanel implements Observer {
 		displayArea = new JTextArea(noChatYet);
 		displayArea.setEditable(false);
 		displayArea.setRows(5);
-		//displayArea.setAutoscrolls(true); //? not sure what this does but i think its what we want
+		displayArea.setLineWrap(true);
 
 		JButton sendButton = new JButton("Send");
 		add(sendButton, BorderLayout.EAST);
@@ -35,6 +36,10 @@ public class Chat extends JPanel implements Observer {
 		writeArea = new JTextArea();
 		writeArea.setBackground(Color.lightGray);
 		writeArea.setRows(4);
+		writeArea.addKeyListener(KeyHandler.getInstance());
+		writeArea.setLineWrap(true
+		);
+		KeyHandler.getInstance().setWriteArea(writeArea);
 		
 		add(writeArea, BorderLayout.SOUTH);
 
@@ -54,8 +59,8 @@ public class Chat extends JPanel implements Observer {
 		if(displayArea.getText().equals(noChatYet)) {
 			displayArea.setText("");
 		}
-		ArrayList<Message> m = ChatLog.getChatLog().getMessages();
-		displayArea.append(m.get(m.size() - 1).toString() + "\n");
+		ArrayList<Message> m = ChatLog.getInstance().getMessages();
+		displayArea.append(m.get(m.size() - 1).toString());
 		//repaint();
 	}
 	

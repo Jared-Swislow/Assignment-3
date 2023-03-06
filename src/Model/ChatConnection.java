@@ -11,8 +11,9 @@ import java.net.Socket;
  * */
 public class ChatConnection implements Runnable {
 	private static ChatConnection instance;
-	private Socket s;
 	private boolean isServer;
+	private DataInputStream din;
+	private DataOutputStream dout;
 	
 	private ChatConnection() {
 	
@@ -35,6 +36,7 @@ public class ChatConnection implements Runnable {
 	
 	//Sets up connection to other user
 	public int connectToOtherUser() {
+		Socket s;
 		try {
 			if (isServer) {
 				ServerSocket ss = new ServerSocket(6666);
@@ -42,6 +44,8 @@ public class ChatConnection implements Runnable {
 			} else {
 				s = new Socket("localhost", 6666);
 			}
+			dout = new DataOutputStream(s.getOutputStream());
+			din = new DataInputStream(s.getInputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 			return -1;
@@ -53,19 +57,20 @@ public class ChatConnection implements Runnable {
 	public void run() {
 		try {
 			
-			DataInputStream din = new DataInputStream(s.getInputStream());
-			DataOutputStream dout = new DataOutputStream(s.getOutputStream());
-			
 			//Main loop
 			while(true) {
 				String str = din.readUTF();
-				System.out.println(str);
-				if(str.equals("q")) {
-					break;
-				}
-				
+				ChatLog.getInstance().addMessage(new Message(str, false));
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void send(String msg) {
+		try {
+			dout.writeUTF(msg);
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
