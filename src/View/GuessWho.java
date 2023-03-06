@@ -3,6 +3,7 @@ package View;
 import Model.ChatLog;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**Main file for Assignment 3
