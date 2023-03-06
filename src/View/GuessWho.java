@@ -1,11 +1,8 @@
 package View;
 
-import Model.ChatConnection;
 import Model.ChatLog;
-import Model.Message;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**Main file for Assignment 3
