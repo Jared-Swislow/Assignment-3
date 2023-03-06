@@ -52,7 +52,8 @@ public class GuessWho extends JFrame{
         }
         
         //Explain how the game works
-        JOptionPane.showMessageDialog(this, "PUT ACTUAL EXPLANATION HERE", "How to play", JOptionPane.INFORMATION_MESSAGE);
+        final String explanationString = "PUT ACTUAL EXPLANATION HERE";
+        JOptionPane.showMessageDialog(this, explanationString, "How to play", JOptionPane.INFORMATION_MESSAGE);
         
         //Connect to other person
         if(ChatConnection.getInstance().connectToOtherUser() != 0) {
