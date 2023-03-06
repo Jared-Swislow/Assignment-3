@@ -23,6 +23,8 @@ public class GuessWho extends JFrame{
         setLayout(borderLayout);
         
         Board board = new Board();
+        GridLayout grid = new GridLayout(3, 8);
+        board.setLayout(grid);
         add(board, BorderLayout.CENTER);
         
         Chat chat = new Chat();
