@@ -37,8 +37,7 @@ public class Chat extends JPanel implements Observer {
 		writeArea.setBackground(Color.lightGray);
 		writeArea.setRows(4);
 		writeArea.addKeyListener(KeyHandler.getInstance());
-		writeArea.setLineWrap(true
-		);
+		writeArea.setLineWrap(true);
 		KeyHandler.getInstance().setWriteArea(writeArea);
 		
 		add(writeArea, BorderLayout.SOUTH);
