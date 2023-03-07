@@ -12,6 +12,7 @@ import java.awt.*;
 public class GuessWho extends JFrame{
     public static GuessWho guessFrame;
     public static void main(String[] args) {
+        GuessWho g = new GuessWho();
         g.setSize(800, 600);
         g.setDefaultCloseOperation(EXIT_ON_CLOSE);
         g.setVisible(true);
