@@ -10,7 +10,7 @@ import java.awt.*;
 /**Main file for Assignment 3
  * */
 public class GuessWho extends JFrame{
-
+    public static GuessWho guessFrame;
     public static void main(String[] args) {
         GuessWho g = new GuessWho();
         g.setSize(800, 600);
@@ -70,4 +70,12 @@ public class GuessWho extends JFrame{
         Thread chatConnectionThread = new Thread(ChatConnection.getInstance());
         chatConnectionThread.start();*/
     }
+    
+    public static GuessWho getGuessWho() {
+    if(guessFrame == null)
+    {
+        guessFrame = new GuessWho();
+    }
+    return guessFrame; }
+    
 }
