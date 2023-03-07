@@ -18,5 +18,6 @@ public class Alert{
 		JOptionPane.showMessageDialog(window, "Congratulations, you guessed the right person!",
 				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE);
 	}
+
     
 }
