@@ -18,6 +18,7 @@ public class Board extends JPanel {
         getCharacters();
         if (Characters!=null){
             for (Person c: Characters){
+                c.setSize(150, 150);
                 this.add(c);
             }
         }
