@@ -1,5 +1,5 @@
-package View;
 
+package View;
 import javax.swing.*;
 import java.util.*;
 import javax.imageio.*;
@@ -9,12 +9,13 @@ public class Person extends JButton {
     private boolean correct;
     private boolean eliminated;
     private Image img;
-    private int id;
 
     public Person(String imagePath){
         try {
-            //img = ImageIO.read(Objects.requireNonNull(getClass().getResource(imagePath)));
-            setIcon(new ImageIcon(img));
+            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/"+imagePath)));
+            Image newimg = img.getScaledInstance( 150, 150,  java.awt.Image.SCALE_SMOOTH ) ;
+
+            setIcon(new ImageIcon(newimg));
         } catch (Exception ex) {
             System.out.println(ex);
         }
