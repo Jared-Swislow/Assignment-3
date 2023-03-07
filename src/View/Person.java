@@ -10,6 +10,8 @@ public class Person extends JButton {
     private boolean eliminated;
     private Image img;
     private int id;
+    GuessWho window = GuessWho.getGuessWho();
+
 
     public Person(String imagePath){
         try {
@@ -38,4 +40,19 @@ public class Person extends JButton {
     public boolean isCorrect() {
         return this.correct;
     }
+
+    public int guessPerson(){
+        String[] options = {"Guess", "Eliminate"};
+        int result = JOptionPane.showOptionDialog(window, "Guess or Eliminate this person", "Person Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        if(result == JOptionPane.YES_OPTION) {
+            //Guess was clicked
+            return 1;
+        }
+        else{
+            // Eliminate was clicked
+            return 0;
+        }
+    }
+
+
 }

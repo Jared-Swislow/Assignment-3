@@ -18,7 +18,7 @@ public class GuessWho extends JFrame{
         g.setVisible(true);
     }
     
-    GuessWho() {
+    private GuessWho() {
         BorderLayout borderLayout = new BorderLayout();
         setLayout(borderLayout);
         

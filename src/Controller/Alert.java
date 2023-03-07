@@ -1,17 +1,22 @@
 package Controller;
+import View.GuessWho;
 import javax.swing.*;
 
 public class Alert{
-    private static Alert alerts;
+	GuessWho window = GuessWho.getGuessWho();
+	private static Alert alerts;
 
-    public static void getAlerts(){
-		JFrame frame = new JFrame("Main Window");
-      
-    	JOptionPane.showMessageDialog(frame, "Congratulations, you guessed the right person!","YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE);
-		
-    	frame.setSize(350,350);
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frame.setVisible(true);
+    public static Alert getAlerts(){
+		if(alerts == null){
+			alerts = new Alert();
+		}
+		return alerts;
+
+	}
+
+	public void winMessage(){
+		JOptionPane.showMessageDialog(window, "Congratulations, you guessed the right person!",
+				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE);
 	}
     
 }
