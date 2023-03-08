@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
  * */
 public class ControlHandler implements ActionListener {
 	private static ControlHandler controls;
-	Alert alert = Alert.getAlerts();
+	// Alert alert = Alert.getAlerts();
+
+	private ControlHandler(){}
 
 	public static ControlHandler getControls(){
 		if(controls == null){
@@ -28,13 +30,13 @@ public class ControlHandler implements ActionListener {
 			String[] options = {"Guess", "Eliminate"};
 			int result = JOptionPane.showOptionDialog(window, "Guess or Eliminate this person", "Person Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 			if(result == JOptionPane.YES_OPTION) {
-				p1.setEliminatedTrue();
-			}
-			else{
-				// Check to see if guessed person is tagged as the correct one
 				if(p1.isCorrect()){
 					// If guess was correct display you win message
-					alert.winMessage();
+					JOptionPane.showMessageDialog(window, "Congratulations, you guessed the right person!",
+				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE); 
+			}
+			else{
+				p1.setEliminatedTrue();
 				}
 			}
 		}

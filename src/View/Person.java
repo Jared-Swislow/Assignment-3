@@ -25,12 +25,6 @@ public class Person extends JButton {
     }
 
     public boolean isEliminated() {
-        try {
-            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/yellow.jpg")));
-            setIcon(new ImageIcon(img));
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
         return eliminated;
     }
 
@@ -39,6 +33,12 @@ public class Person extends JButton {
     }
 
     public void setEliminatedTrue() {
+        try {
+            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/yellow.jpg")));
+            setIcon(new ImageIcon(img));
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
         this.eliminated = true;
     }
 
