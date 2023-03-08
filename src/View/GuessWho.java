@@ -53,7 +53,7 @@ public class GuessWho extends JFrame{
         }
         
         //Explain how the game works
-        final String explanationString = "PUT ACTUAL EXPLANATION HERE";
+        final String explanationString = "To play this game, each player receives a random character.\nYou and your opponent must take turns asking each other 'yes' or 'no' questions in order to guess each other's character.\nKnock down characters that you rule out based on your opponent's answer to the question.\nBest of five.";
         JOptionPane.showMessageDialog(this, explanationString, "How to play", JOptionPane.INFORMATION_MESSAGE);
         
         //Connect to other person
