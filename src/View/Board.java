@@ -41,7 +41,7 @@ public class Board extends JPanel {
             }
             int personsIndex = (int)Math.random() * charStrings.size();
             String personsChar = charStrings.get(personsIndex);
-            String[] name = personsChar.split(".");
+            String[] name = personsChar.split(".bmp");
             String personName = name[0];
             String person = personName.substring(0, 1).toUpperCase() + personName.substring(1);
         } catch (Exception ex) {
