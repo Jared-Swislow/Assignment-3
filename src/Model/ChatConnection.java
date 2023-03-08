@@ -59,7 +59,10 @@ public class ChatConnection implements Runnable {
 			//Main loop
 			while(true) {
 				String str = din.readUTF();
-				ChatLog.getInstance().addMessage(new Message(str, false));
+				//Don't send an empty message
+				if(!str.strip().equals("")) {
+					ChatLog.getInstance().addMessage(new Message(str, false));
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
