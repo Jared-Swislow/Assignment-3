@@ -47,8 +47,10 @@ public class KeyHandler implements KeyListener {
 			if(writeArea == null) {
 				System.err.println("KeyHandler's write area was not set");
 			} else {
-				ChatLog.getInstance().addMessage(new Message(writeArea.getText(), true));
-				ChatConnection.getInstance().send(writeArea.getText());
+				if(!writeArea.getText().strip().equals("")) {
+					ChatLog.getInstance().addMessage(new Message(writeArea.getText(), true));
+					ChatConnection.getInstance().send(writeArea.getText());
+				}
 				writeArea.setText("");
 			}
 		}
