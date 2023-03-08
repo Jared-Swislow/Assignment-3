@@ -5,6 +5,9 @@ import Model.ChatLog;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ControlHandler;
+
 import java.awt.*;
 
 /**Main file for Assignment 3
@@ -12,7 +15,7 @@ import java.awt.*;
 public class GuessWho extends JFrame{
     public static GuessWho guessFrame;
     public static void main(String[] args) {
-        GuessWho g = new GuessWho();
+        GuessWho g =  getGuessWho();
         g.setSize(800, 600);
         g.setDefaultCloseOperation(EXIT_ON_CLOSE);
         g.setVisible(true);

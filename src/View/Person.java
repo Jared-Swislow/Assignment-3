@@ -9,25 +9,33 @@ public class Person extends JButton {
     private boolean correct;
     private boolean eliminated;
     private Image img;
-    private int id;
-    GuessWho window = GuessWho.getGuessWho();
-
+    private String name;
 
     public Person(String imagePath){
         try {
-            //img = ImageIO.read(Objects.requireNonNull(getClass().getResource(imagePath)));
+            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/" + imagePath)));
             setIcon(new ImageIcon(img));
         } catch (Exception ex) {
             System.out.println(ex);
         }
         this.correct = false;
         this.eliminated = false;
+        this.name = imagePath.split(".bmp")[0];
     }
 
     public boolean isEliminated() {
+        try {
+            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/yellow.jpg")));
+            setIcon(new ImageIcon(img));
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
         return eliminated;
     }
 
+    public String getName(){
+        return this.name;
+    }
 
     public void setEliminatedTrue() {
         this.eliminated = true;
@@ -40,20 +48,4 @@ public class Person extends JButton {
     public boolean isCorrect() {
         return this.correct;
     }
-
-    public int guessPerson(){
-        String[] options = {"Guess", "Eliminate"};
-        int result = JOptionPane.showOptionDialog(window, "Guess or Eliminate this person", "Person Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-        if(result == JOptionPane.YES_OPTION) {
-            //Guess was clicked
-            return 1;
-        }
-        else{
-            // Eliminate was clicked
-            return 0;
-        }
-    }
-
-
-
 }

@@ -2,6 +2,9 @@ package View;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import Controller.ControlHandler;
+
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -19,6 +22,9 @@ public class Board extends JPanel {
         if (Characters!=null){
             for (Person c: Characters){
                 c.setSize(150, 150);
+                JLabel name = new JLabel(c.getName());
+                name.setVerticalAlignment(SwingConstants.BOTTOM);
+                c.add(name);
                 this.add(c);
             }
         }
@@ -26,25 +32,20 @@ public class Board extends JPanel {
     }
 
     public void getCharacters(){
-        JButton button = new JButton();
-        System.out.println(new File("Characters.txt").getAbsolutePath());
         File CharactersFile = new File(Objects.requireNonNull(getClass().getResource("Characters.txt")).getFile());
+        // ControlHandler controls = ControlHandler.getControls();
         try{
             Scanner Chars = new Scanner (CharactersFile);
             while (Chars.hasNextLine()){
                 String data = Chars.nextLine();
-                System.out.println(data);
                 Person Character = new Person(data);
+                // Character.addActionListener(controls);
                 Characters.add(Character);
-
             }
+            Chars.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }
-
-
-
-
     }
 
 }
