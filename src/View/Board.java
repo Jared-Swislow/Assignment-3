@@ -15,12 +15,13 @@ import java.util.Scanner;
 /**Displays the board
  * */
 public class Board extends JPanel {
-    public List<Person> Characters = new ArrayList<Person>();
+    public List<Person> characters = new ArrayList<Person>();
+    public ArrayList<String> charStrings = new ArrayList<>();
     Board() {
         setBackground(Color.PINK);
         getCharacters();
-        if (Characters!=null){
-            for (Person c: Characters){
+        if (characters!=null){
+            for (Person c: characters){
                 c.setSize(150, 150);
                 JLabel name = new JLabel(c.getName());
                 name.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -32,20 +33,20 @@ public class Board extends JPanel {
     }
 
     public void getCharacters(){
+        JButton button = new JButton();
+        System.out.println(new File("Characters.txt").getAbsolutePath());
         File CharactersFile = new File(Objects.requireNonNull(getClass().getResource("Characters.txt")).getFile());
-        // ControlHandler controls = ControlHandler.getControls();
         try{
             Scanner Chars = new Scanner (CharactersFile);
             while (Chars.hasNextLine()){
                 String data = Chars.nextLine();
+                System.out.println(data);
                 Person Character = new Person(data);
-                // Character.addActionListener(controls);
                 Characters.add(Character);
+
             }
-            Chars.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }
     }
-
 }
