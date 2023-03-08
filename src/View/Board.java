@@ -17,8 +17,8 @@ public class Board extends JPanel {
     Board() {
         setBackground(Color.PINK);
         getCharacters();
-        if (Characters!=null){
-            for (Person c: Characters){
+        if (characters!=null){
+            for (Person c: characters){
                 c.setSize(150, 150);
                 this.add(c);
             }
