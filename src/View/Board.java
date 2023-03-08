@@ -33,17 +33,13 @@ public class Board extends JPanel {
     }
 
     public void getCharacters(){
-        JButton button = new JButton();
-        System.out.println(new File("Characters.txt").getAbsolutePath());
         File CharactersFile = new File(Objects.requireNonNull(getClass().getResource("Characters.txt")).getFile());
         try{
             Scanner Chars = new Scanner (CharactersFile);
             while (Chars.hasNextLine()){
                 String data = Chars.nextLine();
-                System.out.println(data);
                 Person Character = new Person(data);
-                Characters.add(Character);
-
+                characters.add(Character);
             }
         } catch (Exception ex) {
             System.out.println(ex);
