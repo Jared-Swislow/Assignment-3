@@ -28,9 +28,6 @@ public class Chat extends JPanel implements Observer {
 		displayArea.setRows(5);
 		displayArea.setLineWrap(true);
 
-		JButton sendButton = new JButton("Send");
-		add(sendButton, BorderLayout.EAST);
-
 		add(displayArea, BorderLayout.NORTH);
 		
 		writeArea = new JTextArea();

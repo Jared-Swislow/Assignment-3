@@ -23,9 +23,6 @@ public class Board extends JPanel {
         if (characters!=null){
             for (Person c: characters){
                 c.setSize(150, 150);
-                JLabel name = new JLabel(c.getName());
-                name.setVerticalAlignment(SwingConstants.BOTTOM);
-                c.add(name);
                 this.add(c);
             }
         }
@@ -34,11 +31,13 @@ public class Board extends JPanel {
 
     public void getCharacters(){
         File CharactersFile = new File(Objects.requireNonNull(getClass().getResource("Characters.txt")).getFile());
+        // ControlHandler controls = ControlHandler.getControls();
         try{
             Scanner Chars = new Scanner (CharactersFile);
             while (Chars.hasNextLine()){
                 String data = Chars.nextLine();
                 Person Character = new Person(data);
+                // Character.addActionListener(controls);
                 characters.add(Character);
             }
             Chars.close();

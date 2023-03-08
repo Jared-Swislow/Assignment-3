@@ -56,7 +56,6 @@ public class ChatConnection implements Runnable {
 	@Override
 	public void run() {
 		try {
-			
 			//Main loop
 			while(true) {
 				String str = din.readUTF();
