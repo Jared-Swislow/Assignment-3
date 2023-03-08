@@ -41,6 +41,7 @@ public class Board extends JPanel {
                 Person Character = new Person(data);
                 characters.add(Character);
             }
+            Chars.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }
