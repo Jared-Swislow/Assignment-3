@@ -46,10 +46,10 @@ public class Board extends JPanel {
         }
     }
 
-    public void getRandom(){
+    public String getRandom(){
         int personsIndex = (int)Math.random() * charStrings.size();
-        String personsChar = charStrings.get(personsIndex);
-        String[] name = personsChar.split(".");
-        String personName = name[0];
+        Person person = characters.get(personsIndex);
+        person.setCorrect(true);
+        return person.getName();
     }
 }
