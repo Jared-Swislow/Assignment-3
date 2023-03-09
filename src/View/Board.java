@@ -2,9 +2,7 @@ package View;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import Controller.ControlHandler;
-
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
