@@ -12,31 +12,32 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-/**Displays the board
- * */
+/**
+ * 
+ * Displays the board
+ */
 public class Board extends JPanel {
     public List<Person> characters = new ArrayList<Person>();
     public ArrayList<String> charStrings = new ArrayList<>();
     private String correct = null;
+
     Board() {
         setBackground(Color.PINK);
         getCharacters();
-        if (characters!=null){
-            for (Person c: characters){
+        if (characters != null) {
+            for (Person c : characters) {
                 c.setSize(150, 150);
                 this.add(c);
             }
         }
-
     }
 
-    public void getCharacters(){
-        //File charactersFile = new File(System.getProperty("user.dir") + "/View/characters.txt");
+    public void getCharacters() {
         File charactersFile = new File(System.getProperty("user.dir") + "/src/View/characters.txt");
         ControlHandler controls = ControlHandler.getControls();
-        try{
+        try {
             Scanner chars = new Scanner(charactersFile);
-            while (chars.hasNextLine()){
+            while (chars.hasNextLine()) {
                 String data = chars.nextLine();
                 Person character = new Person(data);
                 character.addActionListener(controls);
@@ -48,8 +49,8 @@ public class Board extends JPanel {
         }
     }
 
-    public String getRandom(){
-        if (correct == null){
+    public String getRandom() {
+        if (correct == null) {
             int personsIndex = (int) (Math.random() * characters.size());
             Person person = characters.get(personsIndex);
             person.setCorrect(true);
