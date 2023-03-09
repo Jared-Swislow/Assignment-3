@@ -43,7 +43,7 @@ public class GuessWho extends JFrame{
         chat.add(displayWithScroll, BorderLayout.NORTH);
         chat.add(writeWithScroll, BorderLayout.SOUTH);
         
-        /* UNCOMMENT THIS TO HAVE ACTUAL CLIENT-SERVER CONNECTION
+         //UNCOMMENT THIS TO HAVE ACTUAL CLIENT-SERVER CONNECTION
         //Ask user if they want to be a server or a client
         String[] options = {"Server", "Client"};
         int result = JOptionPane.showOptionDialog(this, "Client or server?", "Client or Server", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
@@ -81,9 +81,9 @@ public class GuessWho extends JFrame{
         chatConnectionThread.start();
 
         String correctPerson = board.getRandom();
-        ChatConnection.getInstance().send("%" + correctPerson);
+        ChatConnection.getInstance().send(correctPerson);
 
-         */
+
 
     }
     

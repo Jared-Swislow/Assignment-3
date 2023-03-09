@@ -56,15 +56,9 @@ public class Chat extends JPanel implements Observer {
 		if(message.equals(noChatYet)) {
 			displayArea.setText("");
 		}
-		if(message.charAt(0) == '%'){
-			// Name of character to guess
-			// Show in dialog box
-			System.out.println("Character: " + message);
-		}
-		else{
-			ArrayList<Message> m = ChatLog.getInstance().getMessages();
-			displayArea.append(m.get(m.size() - 1).toString());
-		}
+		ArrayList<Message> m = ChatLog.getInstance().getMessages();
+		displayArea.append(m.get(m.size() - 1).toString());
+
 		//repaint();
 	}
 	
