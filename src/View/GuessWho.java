@@ -43,16 +43,19 @@ public class GuessWho extends JFrame{
         chat.add(displayWithScroll, BorderLayout.NORTH);
         chat.add(writeWithScroll, BorderLayout.SOUTH);
         
-        /* UNCOMMENT THIS TO HAVE ACTUAL CLIENT-SERVER CONNECTION
+        /* //UNCOMMENT THIS TO HAVE ACTUAL CLIENT-SERVER CONNECTION
         //Ask user if they want to be a server or a client
         String[] options = {"Server", "Client"};
         int result = JOptionPane.showOptionDialog(this, "Client or server?", "Client or Server", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        String serverIP = "";
         if(result == JOptionPane.YES_OPTION) {
             //Reach here if the user clicked Server
             ChatConnection.getInstance().setAsServer();
         } else {
             //Reach here if the user didn't click Server
             ChatConnection.getInstance().setAsClient();
+            //Get IP address of server
+            serverIP = JOptionPane.showInputDialog(this, "Enter the server's IP address");
         }
         
         //Explain how the game works
@@ -60,7 +63,7 @@ public class GuessWho extends JFrame{
         JOptionPane.showMessageDialog(this, explanationString, "How to play", JOptionPane.INFORMATION_MESSAGE);
         
         //Connect to other person
-        if(ChatConnection.getInstance().connectToOtherUser() != 0) {
+        if(ChatConnection.getInstance().connectToOtherUser(serverIP) != 0) {
             //Reach here if connection didn't work
             JOptionPane.showMessageDialog(this, "Could not connect to other user. Exiting...", "Couldn't connect", JOptionPane.ERROR_MESSAGE);
             System.exit(-1);
