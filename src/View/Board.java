@@ -30,17 +30,17 @@ public class Board extends JPanel {
     }
 
     public void getCharacters(){
-        File CharactersFile = new File(Objects.requireNonNull(getClass().getResource("characters.txt")).getFile());
-        ControlHandler controls = ControlHandler.getControls();
+        File charactersFile = new File(System.getProperty("user.dir") + "/src/View/characters.txt");
+        // ControlHandler controls = ControlHandler.getControls();
         try{
-            Scanner Chars = new Scanner (CharactersFile);
-            while (Chars.hasNextLine()){
-                String data = Chars.nextLine();
-                Person Character = new Person(data);
-                Character.addActionListener(controls);
-                characters.add(Character);
+            Scanner chars = new Scanner (charactersFile);
+            while (chars.hasNextLine()){
+                String data = chars.nextLine();
+                Person character = new Person(data);
+                // Character.addActionListener(controls);
+                characters.add(character);
             }
-            Chars.close();
+            chars.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }
