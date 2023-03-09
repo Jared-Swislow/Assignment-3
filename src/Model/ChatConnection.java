@@ -42,6 +42,7 @@ public class ChatConnection implements Runnable {
 			if (isServer) {
 				ServerSocket ss = new ServerSocket(6666);
 				s = ss.accept();
+				ss.close();
 			} else {
 				if(!serverIP.equals("")) {
 					s = new Socket(serverIP, 6666);
