@@ -49,8 +49,8 @@ public class Board extends JPanel {
     }
 
     public String getRandom(){
-        if (correct.equals(null)){
-            int personsIndex = (int)Math.random() * charStrings.size();
+        if (correct == null){
+            int personsIndex = (int) (Math.random() * characters.size());
             Person person = characters.get(personsIndex);
             person.setCorrect(true);
             correct = person.getName();
