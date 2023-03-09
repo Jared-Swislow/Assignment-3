@@ -56,6 +56,10 @@ public class GuessWho extends JFrame{
             ChatConnection.getInstance().setAsClient();
             //Prompt user for server IP
             serverIP = JOptionPane.showInputDialog("Enter server's IP address");
+            if(serverIP == null) {
+                System.out.println("No server IP specified");
+                return;
+            }
         }
         
         //Explain how the game works
