@@ -34,7 +34,8 @@ public class Person extends JButton {
 
     public void setEliminatedTrue() {
         try {
-            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/resources/yellow.jpg")));
+            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("resources/yellow.jpg")));
+            img = img.getScaledInstance(100, 150, java.awt.Image.SCALE_SMOOTH);
             setIcon(new ImageIcon(img));
         } catch (Exception ex) {
             System.out.println(ex);
