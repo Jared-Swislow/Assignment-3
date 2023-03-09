@@ -81,7 +81,7 @@ public class GuessWho extends JFrame{
         chatConnectionThread.start();
 
         String correctPerson = board.getRandom();
-        ChatConnection.getInstance().send(correctPerson);
+        ChatConnection.getInstance().send(correctPerson + "\n");
 
 
 

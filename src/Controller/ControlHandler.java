@@ -2,6 +2,7 @@ package Controller;
 
 import View.Person;
 import View.GuessWho;
+import Model.ChatConnection;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +34,8 @@ public class ControlHandler implements ActionListener {
 				if(p1.isCorrect()){
 					// If guess was correct display you win message
 					JOptionPane.showMessageDialog(window, "Congratulations, you guessed the right person!",
-				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE); 
+				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE);
+					ChatConnection.getInstance().send("You Lost Guess Who");
 				} else {
 					JOptionPane.showMessageDialog(window, "Wrong guess",
 							"Nope", JOptionPane.PLAIN_MESSAGE);
