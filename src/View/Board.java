@@ -30,19 +30,26 @@ public class Board extends JPanel {
     }
 
     public void getCharacters(){
-        File charactersFile = new File(System.getProperty("user.dir") + "/src/View/characters.txt");
-        ControlHandler controls = ControlHandler.getControls();
+        File charactersFile = new File(System.getProperty("user.dir") + "/View/characters.txt");
+        // ControlHandler controls = ControlHandler.getControls();
         try{
-            Scanner chars = new Scanner (charactersFile);
+            Scanner chars = new Scanner(charactersFile);
             while (chars.hasNextLine()){
                 String data = chars.nextLine();
                 Person character = new Person(data);
-                character.addActionListener(controls);
+                // Character.addActionListener(controls);
                 characters.add(character);
             }
             chars.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }
+    }
+
+    public String getRandom(){
+        int personsIndex = (int)Math.random() * charStrings.size();
+        Person person = characters.get(personsIndex);
+        person.setCorrect(true);
+        return person.getName();
     }
 }
