@@ -1,6 +1,5 @@
 package Model;
 
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -8,34 +7,43 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Optional;
 
-/**Establishes and maintains a connection between the users
- * */
+/**
+ * Establishes and maintains a connection between the users
+ */
 public class ChatConnection implements Runnable {
 	private static ChatConnection instance;
 	private boolean isServer;
 	private DataInputStream din;
 	private DataOutputStream dout;
-	
+
 	private ChatConnection() {
-	
 	}
-	
+
+	/**
+	 * 
+	 * @return new ChatConnection
+	 */
 	public static ChatConnection getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new ChatConnection();
 		}
 		return instance;
 	}
-	
+
 	public void setAsServer() {
 		isServer = true;
 	}
-	
+
 	public void setAsClient() {
 		isServer = false;
 	}
-	
-	//Sets up connection to other user
+
+	/**
+	 * 
+	 * Initializes connection between the users
+	 * 
+	 * @return connection between two users
+	 */
 	public int connectToOtherUser(String serverIP) {
 		Socket s;
 		try {
@@ -44,7 +52,7 @@ public class ChatConnection implements Runnable {
 				s = ss.accept();
 				ss.close();
 			} else {
-				if(!serverIP.equals("")) {
+				if (!serverIP.equals("")) {
 					s = new Socket(serverIP, 6666);
 				} else {
 					System.err.println("connectToOtherUser() called on a client without server IP address");
@@ -59,15 +67,15 @@ public class ChatConnection implements Runnable {
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public void run() {
 		try {
-			//Main loop
-			while(true) {
+			// Main loop
+			while (true) {
 				String str = din.readUTF();
-				//Don't send an empty message
-				if(!str.strip().equals("")) {
+				// Don't send an empty message
+				if (!str.strip().equals("")) {
 					ChatLog.getInstance().addMessage(new Message(str, false));
 				}
 			}
@@ -75,11 +83,15 @@ public class ChatConnection implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 
+	 * @param msg
+	 */
 	public void send(String msg) {
 		try {
 			dout.writeUTF(msg);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
