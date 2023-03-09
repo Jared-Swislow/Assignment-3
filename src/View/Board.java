@@ -17,6 +17,7 @@ import java.util.Scanner;
 public class Board extends JPanel {
     public List<Person> characters = new ArrayList<Person>();
     public ArrayList<String> charStrings = new ArrayList<>();
+    private String correct = null;
     Board() {
         setBackground(Color.PINK);
         getCharacters();
@@ -47,9 +48,12 @@ public class Board extends JPanel {
     }
 
     public String getRandom(){
-        int personsIndex = (int)Math.random() * charStrings.size();
-        Person person = characters.get(personsIndex);
-        person.setCorrect(true);
-        return person.getName();
+        if (correct.equals(null)){
+            int personsIndex = (int)Math.random() * charStrings.size();
+            Person person = characters.get(personsIndex);
+            person.setCorrect(true);
+            correct = person.getName();
+        }
+        return correct;
     }
 }
