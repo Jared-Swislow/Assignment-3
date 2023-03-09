@@ -35,6 +35,7 @@ public class ControlHandler implements ActionListener {
 					// If guess was correct display you win message
 					JOptionPane.showMessageDialog(window, "Congratulations, you guessed the right person!",
 				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE);
+					// Send the lost message to the other player
 					ChatConnection.getInstance().send("You Lost Guess Who");
 				} else {
 					JOptionPane.showMessageDialog(window, "Wrong guess",
