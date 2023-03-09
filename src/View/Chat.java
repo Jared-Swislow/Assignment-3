@@ -52,11 +52,19 @@ public class Chat extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		//Empty the display area if this is the first message
-		if(displayArea.getText().equals(noChatYet)) {
+		String message = displayArea.getText();
+		if(message.equals(noChatYet)) {
 			displayArea.setText("");
 		}
-		ArrayList<Message> m = ChatLog.getInstance().getMessages();
-		displayArea.append(m.get(m.size() - 1).toString());
+		if(message.charAt(0) == '%'){
+			// Name of character to guess
+			// Show in dialog box
+			System.out.println("Character: " + message);
+		}
+		else{
+			ArrayList<Message> m = ChatLog.getInstance().getMessages();
+			displayArea.append(m.get(m.size() - 1).toString());
+		}
 		//repaint();
 	}
 	
