@@ -34,6 +34,10 @@ public class ControlHandler implements ActionListener {
 					// If guess was correct display you win message
 					JOptionPane.showMessageDialog(window, "Congratulations, you guessed the right person!",
 				"YOU WON GUESS WHO!", JOptionPane.PLAIN_MESSAGE); 
+				} else {
+					JOptionPane.showMessageDialog(window, "Wrong guess",
+							"Nope", JOptionPane.PLAIN_MESSAGE);
+					p1.setEliminatedTrue();
 				}
 			}
 			else{
