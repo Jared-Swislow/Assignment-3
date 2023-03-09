@@ -31,13 +31,13 @@ public class Board extends JPanel {
 
     public void getCharacters(){
         File charactersFile = new File(System.getProperty("user.dir") + "/src/View/characters.txt");
-        // ControlHandler controls = ControlHandler.getControls();
+        ControlHandler controls = ControlHandler.getControls();
         try{
             Scanner chars = new Scanner (charactersFile);
             while (chars.hasNextLine()){
                 String data = chars.nextLine();
                 Person character = new Person(data);
-                // Character.addActionListener(controls);
+                character.addActionListener(controls);
                 characters.add(character);
             }
             chars.close();
